@@ -2,3 +2,18 @@
     display: none;
     visibility: hidden;
 }
+
+.section {
+    margin: 20px 0;
+}
+
+#content{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    height: 90vh;
+}
+
+#plot-section {
+    flex: 1;
+}

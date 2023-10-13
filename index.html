@@ -19,31 +19,41 @@
     <div id="content" class="hidden">
 
         <!-- Input to select files. After selecting, we update the plotting method selector. -->
-        <label for="file-selector">
-            <span>Upload a file</span>
-            <input id="file-selector" name="file-selector" type="file" onchange="updatePlotOptions()" class="sr-only">
-        </label>
+        <div class="section">
+            <label for="file-selector">
+                <span>Upload a file</span>
+                <input id="file-selector" name="file-selector" type="file" onchange="updatePlotOptions()" class="sr-only">
+            </label>
+        </div>
 
         <!-- Input to select a plotting method, the selector should be updated according to the file selected. -->
-        <div>
-            Select a plotting method:
+        <div class="section" style="display: flex; justify-content: center;">
+            <div style="padding-right: 10px">
+                Select a plotting method:
+            </div>
             <div id="plot-options">
                 <select id="plot-method-selector"></select>
             </div>
         </div>
 
         <!-- Button to trigger plotting -->
-        <button id="plot-button" onclick="plotSelected()">Generate plot!</button>
+        <div class="section">
+            <button id="plot-button" onclick="plotSelected()">Generate plot!</button>
+        </div>
         
         <!-- Div to display the plot -->
-        <div id="plot-div"></div>
+        <div class="section" id="plot-section">
+            <div id="plot-div"></div>
+        </div>
 
         <!-- "Terminal" to run some arbitrary python code. -->
-        <div id="terminal">
+        <div id="terminal" class="section">
+            <div style="padding-bottom: 5px">
             Run whatever you want here (the <code>plot</code> variable contains the current plot):
+            </div>
             <form onsubmit="handleTerminalSubmit(event)">
 
-                <textarea id="terminal-input" name="terminal-input" rows="15" cols="50"># Run some python code</textarea>
+                <textarea id="terminal-input" name="terminal-input" rows="10" cols="50"># Run some python code</textarea>
 
                 <button type="submit">RUN</button>
             </form>
