@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="index.js"></script>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.26.0.min.js" charset="utf-8"></script>
+  </head>
+  <body onload="load_pyodide()">
+
+    <!-- Placeholder while environment is loading, it will be hidden afterwards -->
+    <div id="loading-div">
+        LOADING ENVIRONMENT
+        <div id="loading-logs" style="white-space: pre-line;"></div>
+    </div>
+
+    <!-- Actual content of the web app, when the environment is loaded, the hidden class is removed.  -->
+    <div id="content" class="hidden">
+
+        <!-- Input to select files. After selecting, we update the plotting method selector. -->
+        <label for="file-selector">
+            <span>Upload a file</span>
+            <input id="file-selector" name="file-selector" type="file" onchange="updatePlotOptions()" class="sr-only">
+        </label>
+
+        <!-- Input to select a plotting method, the selector should be updated according to the file selected. -->
+        <div>
+            Select a plotting method:
+            <div id="plot-options">
+                <select id="plot-method-selector"></select>
+            </div>
+        </div>
+
+        <!-- Button to trigger plotting -->
+        <button id="plot-button" onclick="plotSelected()">Generate plot!</button>
+        
+        <!-- Div to display the plot -->
+        <div id="plot-div"></div>
+
+        <!-- "Terminal" to run some arbitrary python code. -->
+        <div id="terminal">
+            Run whatever you want here (the <code>plot</code> variable contains the current plot):
+            <form onsubmit="handleTerminalSubmit(event)">
+
+                <textarea id="terminal-input" name="terminal-input" rows="15" cols="50"># Run some python code</textarea>
+
+                <button type="submit">RUN</button>
+            </form>
+            <div id="terminal-output"></div>
+        </div>
+
+    </div>
+
+  </body>
+</html>
